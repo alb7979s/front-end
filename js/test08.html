@@ -1,0 +1,51 @@
+<!-- innerText innerHTML 차이, 콜백함수로 이벤트 처리 연습 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        1. 버튼 누를 때 동작(이벤트)
+        2. 입력값 얻어오고, 문자열 출력(쓰여진 횟수만큼), 조합해서 반복문으로 출력
+        => 여러가지니까 함수 만들거!
+    -->
+    <input id="msg" value="default msg" />
+    <!-- <button onclick="doAction()">결과확인</button> -->
+    <button>결과확인</button>
+    <div id="list">5</div>
+    <div id="result"></div>
+    <script>
+        // let btn = document.getElementsByTagName('button')[0];
+        // console.dir(btn);   //dir 객체 쪼개서 보여줌
+        
+        // 이렇게도 됨 (쌤은 주로 이거 쓰신대)
+        let btn = document.querySelector('button');
+        // let btns = document.querySelectorAll('button');
+
+        // btn.onclick = doAction; // 함수의 주소를 주는거!
+        // function doAction() {
+        //     alert("호출");
+        // }
+        // 위에랑 같음, ***콜백함수! 내가 호출하는게 아니라 이벤트 발생시 시스템에서 호출해주는거
+        btn.onclick = function () {
+            // 퍼블리셔가 id값 잘 안쓰고 class 쓴대 개발자 쓰라곸ㅋㅋㅋㅋㅋ
+            let msg = document.getElementById("msg");
+            // let msg = document.querySelector('#msg');
+            let result = "";
+            // let list = document.getElementById('list');
+            let list = document.querySelector('#list');
+            for(let i = 0; i < list.innerText; i++) {
+                result += msg.value + "<br>";
+            }
+            console.log(result);
+            let resultDiv = document.querySelector('#result');
+            resultDiv.innerHTML = result;       //innerText로 했더니 <br>이 그냥 출력됨! 그래서 innerHTML로 바꿔줌
+            msg.value=''; 
+        }
+    </script>
+</body>
+</html>
