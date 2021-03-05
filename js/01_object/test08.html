@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    <script>
+      // 생성자를 이용한 객체생성과 비효율성
+      function Member(id, name, email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        // 이 함수는 같은 내용인데 굳이 이렇게 다 생성할 필요 없음! 그래서 프로토타입 이용해서 해결해줌, test09에 나옴
+        this.info = function () {
+          console.log(this.id, this.name, this.email);
+        };
+      }
+      let m1 = new Member('hong', '홍길동', 'hong@a.com');
+      let m2 = new Member('park', '박카스', 'park@a.com');
+      m1.info();
+      m2.info();
+
+      console.log(m1);
+      console.log(m2);
+    </script>
+  </body>
+</html>

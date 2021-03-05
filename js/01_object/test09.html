@@ -1,0 +1,50 @@
+<!-- 프로토타입 체이닝! -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    <script>
+      // prototype 이해하기
+      /*
+      __proto__ 모든 객체 할당됨 -> 부모 객체의 prototype 공간을 가리킴
+      함수 객체는 prototype이 하나 더 만들어짐(함수 자체에) => 여기 prototype엔 constructor라고 있는데 얘는 그 함수 객체(누구의 프로토타입인지)를 가리킴
+      new Member() 할때마다 부모의 프로토타입 가리키는데, 아래 예제에선 Member 함수의 prototype을 가리키게됨. 따라서 그 prototype에 info 함수를 추가해줌!
+      만약 m1.info() 했을때 그 객체에 info() 없으면 부모 __proto__ 가서 거기에 있나 찾아봄, 없으면 또 부모 __proto__ 가서 찾아봄, ... (프로토타입 체이닝!)
+      복습할때 직접 그려보면서 복습하기!
+      */
+      function Member(id, name, age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        /*
+        // 각 객체에 할당되는 부분을 부모의 prototype 공간에 설정(메모리 효율적..)    
+        this.info = function () {
+            console.log(this.id, this.name, this.email)
+        }
+        */
+      }
+
+      Member.prototype.info = function () {
+        // console.log(this);
+        console.log(this.id, this.name, this.age);
+      };
+      console.dir(Member);
+
+      let m1 = new Member('kim', '김신', 33);
+      // 이렇게하면 오버라이딩 개념과 비슷하게 됨 m1에 info() 추가 되어서
+      m1.info = function () {
+        console.log('m1 info 입니다.');
+      };
+
+      let m2 = new Member('kim', '김신', 33);
+      m1.info();
+      m2.info();
+
+      console.dir(m1); // 객체 자체에 info가 추가되어 있음
+      console.dir(m2); // 객체 자체에 info가 없음
+    </script>
+  </body>
+</html>
