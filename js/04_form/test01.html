@@ -1,0 +1,130 @@
+<!-- 
+    ************
+    중요
+    1. 폼 객체 접근!
+    2. onsubmit은 submit될 때 자동으로 호출 됨
+    3. onsubmit이 false면 전송x true면 전송!
+    4. button의 type default는 submit인데 바꾸면 submit은 개발자가 직접 만들어줘야함
+    5. action으로 호출되는 페이지를 정해줄 수 있다.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        onsubmit : 서브밋 이벤트 호출시 자동 실행됨 (cf. submit => 데이터 전송할 때 발생)
+        return false 가 되면 서브밋이 취소된다.
+    -->
+    <form name="mForm" action="a.html" onsubmit="return checkForm();">
+        <div>
+            <!-- document.querySelector(input[name='id'])와 같음 -->
+            아이디 : <input type="text" name="id">
+        </div>
+        <div>
+            패스워드 : <input type="password" name="pass1">
+        </div>
+        <div>
+            패스워드확인 : <input type="password" name="pass2">
+        </div>
+        <div>
+            <!-- button type='submit'이 default -->
+            <button>확인</button>   
+            <!-- button type이 submit이 아니네? 그럼 개발자가 submit 직접 해줘야함 -->
+            <button type="button" onclick="checkForm2();">확인2</button>
+            <!-- cf) input의 default는 'text' -->
+        </div>
+    </form>
+    <script>
+        function checkForm2() {
+            // alert("checkForm2");
+            //입력값을 체크하고 올바르게 입력된 경우에만 이동
+            var f = document.mForm;
+            
+            if (isEmpty(f.id, "아이디를 입력하세요")) return;
+            if (isEmpty(f.pass1, "패스워드를 입력하세요")) return;
+            if (isEmpty(f.pass2, "패스워드확인을 입력하세요")) return;           
+
+            // 호출되는 페이지를 지정 : action
+            f.action = "b.html";
+            // 타입이 버튼인 경우에는 개발자가 직접 폼을 서브밋 해야 한다.
+            f.submit();
+        }
+
+        function isEmpty(ele, msg) {
+            if (ele.value == "") {
+                alert(msg);
+                ele.focus();
+                return true;
+            }            
+            return false;
+        }
+        function checkForm() {
+            // alert("checkForm");  // 함수 호출 여부 확인...
+
+            // 사용자가 모든 입력창에 데이터를 넣었는지 확인
+            var id = document.mForm.id;
+            var pass1 = document.mForm.pass1;
+            var pass2 = document.mForm.pass2;
+            // 반복되는거 아래처럼 줄여쓸 수 있음
+            /*
+            let f = document.mForm;
+            var id = f.id;
+            var pass1 = f.pass1;
+            var pass2 = f.pass2;
+            */
+
+            /*
+           if (id.value == "") {
+               alert("아이디를 입력하세요");
+               id.focus();              //사용자 편의를 위해서 틀린곳으로 향하게 해주느거
+               return false;
+            }
+            if (pass1.value == "") {
+                alert("패스워드를 입력하세요");
+                pass1.focus();
+                return false;
+            }
+            if (pass2.value == "") {
+                alert("패스워드확인을 입력하세요");
+                pass2.focus();
+                return false;
+            }
+            // 동작이 비슷해! 함수로 빼서 처리하자~
+           */
+
+           if (isEmpty(id, "아이디를 입력하세요")) return false;
+           if (isEmpty(pass1, "패스워드를 입력하세요")) return false;
+           if (isEmpty(pass2, "패스워드확인을 입력하세요")) return false;
+
+            // 패스워드와 패스워드확인 창에 입력한 값이 동일한지 체크
+            if (pass1.value != pass2.value) {
+                alert("패스워드를 확인하세요");
+                pass2.value = "";
+                pass1.select();
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
