@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- 
+	체크박스 알아보기...
+	
+	체크박스 체크 상태 : 체크박스객체.checked(true : 체크, false : 해제)
+	체크박스객체.checked = true;   체크
+	체크박스객체.checked = false;   해제
+ -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="mForm">
+      <button type="button" onclick="formCheck()">확인</button>
+      <div>
+        <!-- 이 안에 this는 이벤트 발생한 input 가리킴 -->
+        <input
+          type="checkbox"
+          id="all"
+          name="all"
+          value="all"
+          onclick="doCheck(this.checked)"
+        />
+        <!-- 사용자 편의성 위해서 글자 눌러도 체크 되도록 -->
+        <label for="all"> 전체 </label>
+      </div>
+      <div>
+        오늘 점심 메뉴?
+        <div>
+          <input type="checkbox" id="menu1" name="menu" value="1" />
+          <label for="menu1">불고기</label>
+        </div>
+        <div>
+          <input type="checkbox" id="menu2" name="menu" value="2" />
+          <label for="menu2">불백</label>
+        </div>
+        <div>
+          <input type="checkbox" id="menu3" name="menu" value="3" />
+          <label for="menu3">쭈꾸미</label>
+        </div>
+      </div>
+    </form>
+    <script>
+      // ckStatus는 id="all" 인 체크박스의 체크상태(true / false)
+      function doCheck(ckStatus) {
+        // id가 all인 체크박스가 체크된 상태이면
+        // 나머지 체크박스를 체크된 상태로 변경
+        // 체크해제된 상태이면 나머지 체크박스를 체크해제된 상태로 변경
+        var ckArr = document.querySelectorAll("input[name='menu']");
+        for (let i = 0; i < ckArr.length; i++) {
+          ckArr[i].checked = ckStatus;
+        }
+      }
+      function formCheck() {
+        // name이 menu인 checkbox들이 체크되어 있는 카운트를 센다..
+        // 만약, 카운트가 0이라면 경고창을 띄운다.
+        var ckArr = document.querySelectorAll("input[name='menu']");
+
+        let cnt = 0;
+        let msg = '';
+        for (let i = 0; i < ckArr.length; i++) {
+          if (ckArr[i].checked == true) {
+            cnt++;
+            msg += ckArr[i].value + '\n';
+            // break
+          }
+        }
+        if (cnt == 0) {
+          alert('항목을 선택하세요');
+        } else {
+          alert(msg);
+        }
+      }
+    </script>
+  </body>
+</html>
