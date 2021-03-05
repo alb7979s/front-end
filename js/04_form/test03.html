@@ -1,0 +1,42 @@
+<!--
+    select 객체 이해하기
+
+    select객체.selectedIndex : 선택된 option 항목의 인덱스 위치
+    select객체.options : option 항목들의 배열
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>select 활용하기 - 1</h2>
+    <form name="mForm" action="a.html">
+        <select name="sType">
+            <option value="">선택하세요</option>
+            <option value="writer">작성자</option>
+            <option value="title">제목</option>
+        </select>
+        <input type="text" name="sWord">
+        <button type="button" onclick="doAction()">검색</button>
+    </form>
+    <script>
+        function doAction() {
+            var f = document.mForm;
+            
+            var selEle = f.sType;
+            console.log("선택된 인덱스", selEle.selectedIndex);
+
+            // 검색어 입력창에 입력된 값이 있고, 검색타입에 "선택하세요"가 선택된 경우
+            // 경고창에 "검색항목을 선택하세요"를 띄운다.
+            if (f.sWord.value != "" && selEle.selectedIndex == 0) {
+                alert("검색항목을 선택하세요");
+                return;
+            }
+        }
+    </script>
+</body>
+</html>
