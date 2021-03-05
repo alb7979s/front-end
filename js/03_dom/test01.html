@@ -1,0 +1,71 @@
+<!--
+    <div>테스트</div> 태그를 동적으로 만들어서 특정 엘리먼트에 추가하기...
+
+    1. div 엘리먼트 만들기
+       document.createElement(태그명)
+       var divEle = document.createElement("div");       // 메모리에만 만든 상황, 추가하려면 붙여줘야함
+       메모리에 <div></div> 생성된 상태임...
+
+    2. 테스트 텍스트 노드 만들기
+       document.createTextNode(내용)
+       var txt = document.createTextNode("테스트")
+
+    3. 생성된 div 엘리먼트의 자식으로 텍스트 노드를 추가하기, (<div> ~ </div>)의 ~부분이 inner로 볼수 있는데 div의 자식으로 볼수도 있음
+       부모.appendChild(자식)
+       divEle.appendChild(txt);
+       메모리에 <div>테스트</div>
+
+    4. 아이디가 "list"인 엘리먼트에 생성된 div를 추가하자..
+       var divList = document.querySelector("#list") // 아이디가 "list"인 엘리먼트에
+       divList.appendChild(divEle);
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button onclick="doAdd();">추가</button>
+	
+	<div id="list"></div>
+	
+	<script>
+    var count = 1;
+    function doAdd() {
+//         var list = document.querySelector("#list")
+//         list.innerHTML += "<h2>추가" + count++ + "</h2>";      //이렇게 하면 아래 내용 한번에!
+
+        // 아이디가 list인 엘리먼트 참조 가져오기
+        var list = document.querySelector("#list")
+
+        // h2 태그를 생성하고 list 엘리먼트에 추가하기
+        var h2Ele = document.createElement("h2") // <h2></h2>
+
+        // h2 태그에 "동적 생성" 내용을 추가한다(createTextNode), (둘 다 가능)
+        /*    
+        var txt = document.createTextNode("동적 생성")
+        h2Ele.appendChild(txt)
+        */
+        h2Ele.innerText = "동적 생성"  // <h2>동적 생성</h2>
+
+        // list 엘리먼트 추가 (둘 다 가능)
+//         list.appendChild(h2Ele)
+        list.append(h2Ele)
+    }
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

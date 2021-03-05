@@ -1,0 +1,30 @@
+<!-- 
+	DOM API
+	
+	innerHTML
+ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    <button onclick="doAdd();">추가</button>
+    <button onclick="doDel();">삭제</button>
+
+    <div id="list"></div>
+
+
+    <script>
+      // 심플한데, 이러면 위험함 전체 내용이 다 바뀌기 때문에! 
+      function doAdd() {
+        document.querySelector('#list').innerHTML += '<h1>테스트</h1>';
+      }
+
+      function doDel() {
+        document.querySelector('h1').remove();
+      }
+    </script>
+  </body>
+</html>

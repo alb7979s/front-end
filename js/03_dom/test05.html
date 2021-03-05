@@ -1,0 +1,45 @@
+<!-- 
+	DOM API
+	엘리먼트 삭제하기
+	parent.removeChild(삭제할 엘리먼트);
+ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    <button onclick="doAdd();">추가</button>
+    <button onclick="doDel();">삭제</button>
+
+    <div id="list"></div>
+
+    <script>
+      function doAdd() {
+        var list = document.querySelector('#list');
+        var h1Obj = document.createElement('h1');
+        var txtObj = document.createTextNode('테스트');
+
+        h1Obj.append(txtObj);
+        list.append(h1Obj);
+      }
+      function doDel() {
+        /*
+        var list = document.querySelector("#list");
+        var h1Obj = document.querySelector("h1");
+        list.removeChild(h1Obj);
+		    */
+        
+        // 부모 모를 때(위보다 좀 더 일반적인 방법)!
+        var h1Obj = document.querySelector('h1');
+        // h1Obj.parentNode.removeChild(h1Obj);
+
+        h1Obj.remove();
+
+        // 지금은 그냥 이렇게 해주면 됨 간-단
+        // document.querySelector('h1').remove();
+      }
+    </script>
+  </body>
+</html>

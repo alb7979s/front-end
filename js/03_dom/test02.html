@@ -1,0 +1,34 @@
+<!-- 
+	DOM API 
+	
+	속성 추가하자..
+	엘리먼트.속성명 = 값;
+	<img src="a.jpg" width="200" height="200">
+ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    <button onclick="doAdd();">추가</button>
+    <div id="list"></div>
+
+    <script>
+      function doAdd() {
+        //  <img src="a.jpg" width="200" height="200" msg="a:test:aa">
+
+        var imgObj = document.createElement('img'); // <img>
+        imgObj.src = '../images/burger.jpg';    // <img src='../images/burger.jpg'>
+        imgObj.width = 200;
+        imgObj.height = 150;
+
+        // 사용자 정의 속성을 추가하자
+        // <img src='../images/burger.jpg', msg=''> 이러고 싶은데 원래 있는 태그들처럼 그냥은 안됨 그래서 test03처럼
+        imgObj.msg = '사용자 추가속성...';       
+        document.querySelector('#list').appendChild(imgObj);
+      }
+    </script>
+  </body>
+</html>

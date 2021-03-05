@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button onclick="doAction();">확인</button>
+	<div id="result" data-count="1">속성 확인용</div>
+	
+	<script>
+		function doAction() {
+			var resultObj = document.querySelector("div");
+			
+			console.log(resultObj.id);
+			console.log(resultObj["id"]);
+			console.log(resultObj.getAttribute("id"));
+			
+// 			console.log(resultObj.data-count); 		// 얜 뭐 연산자 껴서 안되고
+			console.log(resultObj["data-count"]);	// 사용자 정의 속성이라 못가져옴!
+			// 사용자 정의 속성은 getAttribute를 가져와야 한다.
+			console.log(resultObj.getAttribute("data-count"));
+		}
+	</script>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
