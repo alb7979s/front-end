@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      h2 {
+        transition: 2s;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 onclick="changeCss()">CSS 적용하기</h2>
+
+    <script>
+      function changeCss() {
+        var h2Ele = document.querySelector('h2');
+        h2Ele.style.border = '5px solid black';
+        h2Ele.style.color = 'tomato';
+        // *셋 중 하나 쓰면 됨, []는 둘 다 되고 .은 카멜 표기법만 가능
+        // h2Ele.style['background-color'] = 'tomato';
+        // h2Ele.style['backgroundColor'] = 'tomato';
+        h2Ele.style.backgroundColor = '#334455';
+        // h2Ele.style.background = "#334455";
+        h2Ele.style.padding = "30px";
+        h2Ele.style.margin = "30px";
+        h2Ele.style.height = "100px";
+        // h2Ele.style['border-radius'] = '30px';
+        h2Ele.style.borderRadius = "30px";
+        h2Ele.style.lineHeight = "100px";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div {
+        margin-top: 50px;
+        width: 500px;
+        height: 300px;
+        font-size: 30px;
+        border: 5px solid black;
+        padding-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <button onclick="show('movie')">영화</button>
+      <button onclick="show('music')">음악</button>
+      <button onclick="show('book')">책</button>
+    </p>
+    <div id="movie">
+      <h1>원피스 극장 12기</h1>
+      <h2>다루마치 산의 황제</h2>
+    </div>
+    <div id="music">
+      <h1>비긴어게인</h1>
+      <h2>태연의 When I ...</h2>
+    </div>
+    <div id="book">
+      <h1>자바</h1>
+      <h2>커피맛은 어떨까??</h2>
+    </div>
+    <script>
+      show('movie');
+      function show(name) {
+        document.querySelector('#movie').style.display = 'none';
+        document.querySelector('#music').style.display = 'none';
+        document.querySelector('#book').style.display = 'none';
+        document.querySelector(`#${name}`).style.display = 'block';
+      }
+    </script>
+  </body>
+</html>

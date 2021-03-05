@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div {
+        transition: 2s;
+      }
+      .a {
+        border: 5px solid black;
+        color: tomato;
+        background-color: #334455;
+        padding: 30px;
+        margin: 30px;
+        height: 100px;
+        border-radius: 30px;
+        line-height: 100px;
+      }
+      .b {
+        font-size: 40px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <button onclick="addCss()">추가하기</button>
+      <button onclick="removeCss()">제거하기</button>
+      <button onclick="toggleCss()">토글</button>
+      <button onclick="hasCss()">확인</button>
+    </p>
+    <div>CSS 클래스 속성 추가 및 제거하기</div>
+    <script>
+      function addCss() {
+        let ele = document.querySelector('div');
+        // ele.setAttribute("class", "a b");
+        // ele.classList.add( 'a' );
+        
+        // *classList로 여러개 한번에 가능
+        ele.classList.add('a', 'b');
+      }
+      function removeCss() {
+        let ele = document.querySelector('div');
+        console.log(ele.getAttribute('class')); // 속성 자체가 없을 때는 null
+
+        // ele.classList.remove('a');
+        ele.classList.remove('a', 'b'); // 둘다 제거
+      }
+      function toggleCss() {
+        let ele = document.querySelector('div');
+        ele.classList.toggle('a');
+        ele.classList.toggle('b');
+      }
+
+      function hasCss() {
+        let ele = document.querySelector('div');
+        console.log(ele.classList.contains('a'));
+        console.log(ele.classList.contains('b'));
+      }
+    </script>
+  </body>
+</html>
