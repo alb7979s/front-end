@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 함수에 기본적인 값을 설정하지 않으면(객체 안주면) 브라우저가 this를 window로 해준다는거 보려고 html로도 만듦
+      var m1 = { id: 'hong' };
+      var m2 = { id: 'kim' };
+
+      function msg() {
+        console.log(this);
+        console.log(this.id + '님이 입장함...');
+      }
+
+      m1.msg = msg;
+      m2.msg = msg;
+
+      // 일반적으로 함수내에서의 this는 함수를 호출한 객체이다.
+      msg(); // undefined님이 입장함
+      m1.msg();
+      m2.msg();
+    </script>
+  </body>
+</html>
