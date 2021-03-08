@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button>버튼1</button>
+    <div id="a">아이디 접근</div>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <script>
+        /*
+        // 1. 바닐라js로 해보면
+        let btn = document.querySelector('button');
+        btn.onclick = function() {
+            let aDiv = document.querySelector("#a");
+            alert( aDiv.innerHTML );
+        };
+        // 2. onclick 표준 이벤트로 바꾼거, 얘는 덮어쓰는 개념이 아니라 함수 하나 더 만들면 두번 동작(Listener 이벤트: 발생하면 어떤거 실행하는거)
+        btn.addEventListener('click', function() {
+            let aDiv = document.querySelector("#a");
+            alert( aDiv.innerHTML );
+        });
+
+        // 이 예제에서 onclick까지 jquery로 바꿔줄거임
+        $("butto")[0].onclick = function(){
+            alert( $('#a').text());
+        };
+        */
+        // 3. 이렇게!, jquery.js에 on 프로퍼티도 만들어줌
+        $('button').on('click', function() {
+            alert( $('#a').text());
+        });
+        
+        // 4. 단축 이벤트로 이렇게도 가능.
+        $('button').click(function(){
+            alert( $('#a').text());
+        });
+    </script>
+</body>
+</html>

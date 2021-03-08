@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 직접 만든거 쓸거 -->
+    <script src="jquery.js"></script>   
+</head>
+<body>
+    <button>클릭</button>
+    <div id="a">아이디 접근</div>
+    <script>
+        /*
+        let btn = document.querySelectorAll('button');
+        let div = document.querySelector("#a");
+        */
+        
+       //jquery가 생성한 객체에서 HTMLElement 꺼낸거, 얘 쓰는 예. innerHTML, value
+       let btn = $('button')[0];
+       let div = $('#a')[0];
+       
+       // tip) 라이브러리 _(), $() 로 되어있대 왜냐면 js에서 맨 앞에 특수문자 _랑 $만 지원해준다고
+       //jquery가 내부적으로 생성한 객체(변수 앞에 $붙여서 jquery 객체를 담고 있는 변수라고 구분해줬었대), 얘 쓰는 예. html(), val()
+       let $btn = $('button');  // $대신 jQuery 써도 됨, 즉 $는 함수 이름이라 보면 됨!
+       let $div = $('#a');
+
+       </script>
+</body>
+</html>

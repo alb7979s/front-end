@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button>버튼1</button>
+    <button>버튼2</button>
+    <button>버튼3</button>
+    <div id="a">아이디 접근</div>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <script>
+        // $("button:ntn-child(1)").onclick = function(){}; 는 안됨 객체가 리턴 되는데 거기에는 onclick이 없음
+        $("button:nth-child(1)")[0].onclick = function(){
+            // $("#a")[0].innerText = "버튼 1번이 클릭 되었음";
+            // 위 코드를 jquery에선 이렇게 할 수 있게 만들어져 있음, 그래서 js가서 구현해줄거
+            $('#a').text("버튼 1번이 클릭 되었음");
+        };
+
+        $("button:nth-child(2)")[0].onclick = function(){
+            $('p').text("버튼 2번이 클릭 되었음");
+        };
+
+        $("button:nth-child(3)")[0].onclick = function(){
+            // alert($("#a")[0].innerText); 이번엔 이거 만들거임, 인자개수에 따라 set인지 get인지 달라짐!
+            alert($('p').text());
+        };
+
+        // jquery는 체이닝! 이렇게 해줄라면 return을 this(jquey객체)로 해줌!, 단 set했을때만~
+        // Ex. $("#a").attr("id", "aaa").text('hi');
+
+    </script>
+</body>
+</html>

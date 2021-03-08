@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button id="btn1">설정</button>
+    <button id="btn2">가져오기</button>
+    <div id="a">아이디 접근</div>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <script>
+        /* 바닐라js
+        let pArr = document.querySelectorAll('p');
+
+        // set
+        for(let i = 0; i < pArr.length; i++){
+            pArr[i].setAttribute('data-count', 'aaa');
+            pArr[i].setAttribute('data-msg', 'bbb');
+        }
+        // get
+        pArr[0].getAttribute('data-msg');
+        */
+        // 사용자 정의 같은건 setAttribute()만 가능하니까 jquery에서는 이거 써서 attr()로 구현됨;
+        $('#btn1').on('click', function() {
+            // $('p').attr('data-count', 'aaa');
+            // $('p').attr('data-msg', 'bbb');
+            // 위 두줄이랑 같음, 아래처럼 체이닝 방식으로 쓰는걸 권장한대(객체 한번 찾았으면 그거 끝날때까지 계속 물고감)
+            // $('p').attr('data-count', 'aaa').attr('data-msg', 'bbb');
+            // 위 동일한 작업, 객체 이용해서 좀 더 개선하면 
+            $('p').attr({'data-count': 'aaa', 'data-msg': 'bbb'});
+        }); 
+        
+        // get
+        $('#btn2').on('click', function() {
+            alert($('p').attr('data-msg'))
+        }); 
+
+    </script>
+</body>
+</html>
