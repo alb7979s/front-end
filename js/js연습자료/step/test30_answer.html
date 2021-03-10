@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>지역</th>
+                    <th>좋아하는 커피</th>
+                </tr>
+            </thead>
+            <tbody id="dataTBody"></tbody>
+        </table>
+    </div>
+    <script>
+        // 화면 로딩 시 아래의 data 변수에 있는 데이터를 dataTBody에 추가하시오
+
+		$.ajax({
+			url:"test30.jsp",  
+ 			type:"GET",
+  			dataType:'json',
+ 			success:function(data) {
+ 		        data.forEach(function (item) {
+ 		            $('#dataTBody').append(`
+ 		                <tr>
+ 		                    <td>${item.name}</td>
+ 		                    <td>${item.area}</td>
+ 		                    <td><img src='../images/${item.src}' width='100' /></td>
+ 		                </tr>
+ 		            `);
+ 		        });
+ 			},
+ 			error:function(xhr,status,msg){
+ 				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+ 			}
+ 		});
+    </script>
+</body>
+
+</html>

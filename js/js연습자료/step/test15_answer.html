@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result {
+            width: 300px;
+            height: 300px;
+            font-size: 30px;
+            margin: 10px;
+            text-align: center;
+            line-height: 300px;
+        }
+
+        .test {
+            background-color: #345;
+            color: white;
+            border: 10px solid tomato;
+            border-radius: 50%
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button id="btn">class 적용</button>
+    </div>
+    <div id="result">TEST CSS</div>
+    <script>
+        // 버튼 클릭 시 result에 class 속성의 값으로 test를 적용시킨다.
+        // Vanila Javascript 를 이용(element.className or setAttribute)
+
+        document.getElementById('btn').addEventListener('click', function () {
+            const result = document.getElementById("result");
+            // result.class = "test"; // 아무일도 발생하지 않는다.
+            // result["class"] = "test";   // 아무일도 발생하지 않는다.
+
+            // result.className = "test"; // class는 className 으로 적용
+            result["className"] = "test"; // 가능
+
+            // result.setAttribute("class", "test");   // 가능
+            // result.setAttribute("className", "test"); // 불가능
+        });
+    </script>
+</body>
+
+</html>

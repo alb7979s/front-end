@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <button id="btn1">속성확인</button>
+        <button id="btn2">속성추가</button>
+    </div>
+    <div id="div1" data-cnt="10">테스트용</div>
+    <div id="div2"></div>
+    <script>
+        // btn1 버튼 클릭 시 div1의 data-cnt속성과 data-name 속성의 값을 div2에 출력한다.
+        // btn2 버튼 클릭 시 div1에 data-name 속성에 "추가됨"으로 값을 설정
+        // jQuery를 이용
+
+        /*  attr 함수 이용
+        const $div1 = $('#div1');
+        $('#btn1').click(function () {
+            $('#div2').text(
+                'data-cnt : ' + $div1.attr('data-cnt') + ', data-name : ' + $div1.attr('data-name')
+            );
+        });
+        $('#btn2').on('click', function () {
+            $('#div1').attr('data-name', '추가됨');
+        });
+        */
+
+        /*  data 함수 이용
+        const $div1 = $('#div1');
+        $('#btn1').click(function () {
+            $('#div2').text(
+                'data-cnt : ' + $div1.data('cnt') + ', data-name : ' + $div1.data('name')
+            );
+        });
+        $('#btn2').on('click', function () {
+            $('#div1').data('name', '추가됨');
+        });
+        */
+
+        // es6
+        const $div1 = $('#div1');
+        $('#btn1').click(() => {
+            $('#div2').text(`data-cnt : ${$div1.data('cnt')}, data-name : ${$div1.data('name')}`)
+        });
+        $('#btn2').on('click', () => $('#div1').data('name', '추가됨'));
+    </script>
+</body>
+
+</html>

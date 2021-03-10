@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="addBtn">추가</button>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>가격</th>
+                </tr>
+            </thead>
+            <tbody id="dataTBody"></tbody>
+        </table>
+    </div>
+    <script>
+        // 추가 버튼 클릭시 tbody에 tr 엘리먼트 추가 데이터는 원하는 대로 넣는다.
+        // Vanila Javascript를 이용
+
+        /*  dom 이용
+        document.getElementById('addBtn').addEventListener('click', function () {
+            const trEle = document.createElement('tr');
+            trEle.innerHTML = '<td>1</td><td>2</td><td>3</td>';
+            document.getElementById('dataTBody').append(trEle);
+        });
+        */
+
+        /*  script 함수 사용
+        document.getElementById('addBtn').addEventListener('click', function () {
+            const tbodyEle = document.getElementById('dataTBody');
+            const row = tbodyEle.insertRow(tbodyEle.rows.length);
+            row.insertCell(0).innerHTML = 1;
+            row.insertCell(1).innerHTML = 2;
+            row.insertCell(2).innerHTML = 3;
+        });
+        */
+    </script>
+</body>
+
+</html>

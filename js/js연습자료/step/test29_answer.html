@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>지역</th>
+                    <th>좋아하는 커피</th>
+                </tr>
+            </thead>
+            <tbody id="dataTBody"></tbody>
+        </table>
+    </div>
+    <script>
+	    // 화면 로딩 시 test29.jsp 파일의 내용을 ajax 요청으로 응답을 받아서 dataTBody에 추가하시오
+	    /*
+	    
+	    	$.ajax({
+	    		url: 호출할 페이지,
+	    		type: 요청 방식,
+	    		dataType: '서버에서 전송되는 타입',
+	    		success: '성공시의 콜백함수',
+	    		error: '실패시의 콜백함수'
+	    	})
+	    */
+		$.ajax({
+			url:"test29.jsp",  
+ 			type:"GET",
+ 			dataType: "xml",
+ 			success:function(data) {
+ 		        const $list = $(data).find('student');
+ 		        $list.each(function (index, student) {
+ 		            const $student = $(student);
+
+ 		            $('#dataTBody').append(`
+ 		                <tr>
+ 		                    <td>${$student.find('name').text()}</td>
+ 		                    <td>${$student.find('area').text()}</td>
+ 		                    <td><img src='../images/${$student.find('src').text()}' width='100' /></td>
+ 		                </tr>
+ 		            `);
+ 		        });
+ 				
+ 			},
+ 			error:function(xhr,status,msg){
+ 				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+ 			}
+ 		});
+    </script>
+</body>
+
+</html>

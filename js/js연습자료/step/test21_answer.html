@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <button type="button" id="addBtn">추가</button>
+        <button type="button" id="delBtn">삭제</button>
+        <div>
+            <select id="sel">
+                <option value="">선택하세요</option>
+            </select>
+        </div>
+    </form>
+    <script>
+        // 추가 버튼 클릭시 <option value='1'>테스트</option> 을 추가한다
+        // 삭제 버튼 클릭시 option 항목 하나를 삭제한다.
+        // Vanila Javascript를 이용
+
+        const selEle = document.getElementById('sel');
+        document.getElementById('addBtn').addEventListener('click', function () {
+
+            /* 1. DOM 활용
+            var opt = document.createElement("option");
+            // 속성 추가
+            opt.value = 0; // <option value="0"></option>
+            opt.append('테스트'); // <option value="0">테스트</option>
+            selEle.append(opt);
+            */
+
+            //*  2. 자바스크립트 내장 객체 활용
+            console.log(selEle.options.length);
+            selEle.options[selEle.options.length] = new Option("테스트", "0");
+            //*/
+
+
+            // 3가지 방식으로 처리하자..
+            // 3. innerHTML 활용
+            // selEle.innerHTML += "<option value='100'>테스트</option>";
+
+        });
+
+        document.getElementById('delBtn').addEventListener('click', function () {
+            // selEle.options.length = 1;
+
+            // 맨 마지막 삭제하기
+            // selEle.options[selEle.options.length - 1] = null;
+            selEle.options[selEle.options.length - 1] = undefined;
+        });
+    </script>
+</body>
+
+</html>

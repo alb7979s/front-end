@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result {
+            width: 300px;
+            height: 300px;
+            font-size: 30px;
+            margin: 10px;
+            text-align: center;
+            line-height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button id="btn1">배경색 변경하기(#345)</button>
+        <button id="btn2">글자색 변경하기(white)</button>
+        <button id="btn3">테두리 추가하기(10px solid tomato)</button>
+        <button id="btn4">테두리 둥글게(50%)</button>
+    </div>
+    <div id="result">TEST CSS</div>
+    <script>
+        // 각 버튼 클릭 시 버튼의 타이틀에 맞는 css를 적용한다.
+        // Vanila Javascript 를 이용(element.style.속성 활용)
+
+        /* 객체.style.속성명(camel 표기사용)
+        const result = document.getElementById('result');
+        document.getElementById('btn1').onclick = function () {
+            result.style.backgroundColor = '#345';
+        };
+        document.getElementById('btn2').onclick = function () {
+            result.style.color = 'white';
+        };
+        document.getElementById('btn3').onclick = function () {
+            result.style.border = '10px solid tomato';
+        };
+        document.getElementById('btn4').onclick = function () {
+            result.style.borderRadius = '50%';
+        };
+        */
+
+        /*  객체.style.속성명([camel, 하이픈] 표기사용)
+        const result = document.getElementById('result');
+        document.getElementById('btn1').onclick = function () {
+            result.style['backgroundColor'] = '#345';
+        };
+        document.getElementById('btn2').onclick = function () {
+            result.style['color'] = 'white';
+        };
+        document.getElementById('btn3').onclick = function () {
+            result.style['border'] = '10px solid tomato';
+        };
+        document.getElementById('btn4').onclick = function () {
+            result.style['border-radius'] = '50%';
+        };
+        */
+
+        /*  CSSStyleDeclaration 객체 이용(하이픈 표기 사용)
+        const styleObj = document.getElementById('result').style;
+        document.getElementById('btn1').onclick = function () {
+            styleObj.setProperty('background-color', '#345');
+        };
+        document.getElementById('btn2').onclick = function () {
+            styleObj.setProperty('color', 'white');
+        };
+        document.getElementById('btn3').onclick = function () {
+            styleObj.setProperty('border', '10px solid tomato');
+        };
+        document.getElementById('btn4').onclick = function () {
+            // styleObj.setProperty('border-radius', '50%');
+            styleObj.setProperty('border-radius', '50%');
+        };
+        */
+
+        // 인라인 스타일 전체 한꺼번에 처리하기
+        /*
+        const result = document.getElementById('result');
+        result.setAttribute('style',
+            'background-color: #345; color: white; border: 10px solid tomato; border-radius: 50%');
+        */
+        const result = document.getElementById('result');
+        result.setAttribute('style',
+            'background-color: #345; color: white; border: 10px solid tomato; border-radius: 50%');
+    </script>
+</body>
+
+</html>

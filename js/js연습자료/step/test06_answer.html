@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <input type="text" id="msg">
+    <div class="result"></div>
+    <script>
+        // id가 msg인 텍스트 창에 내용 입력 시 
+        // class 속성이 result인 div에 텍스트 창에서 입력한 내용을 보여준다.
+        // jQeury 를 이용
+        /*
+        $('#msg').keyup(function () {
+            $('.result').text(this.value);
+        });
+        */
+
+        /* $(this).val()
+        $('#msg').keyup(function () {
+            $('.result').text($(this).val());
+        });
+        */
+
+        /* 이벤트 객체 이용 : e.target
+        $('#msg').keyup(function (e) {
+            $('.result').text(e.target.value);
+        });
+        */
+
+        /* 이벤트 객체 이용 : e.target의 jQuery 객체 만들어서 이용
+        $('#msg').keyup(function (e) {
+            $('.result').text($(e.target).val());
+        });
+        */
+
+        // 이벤트 콜백함수를 화살표 함수로 만들 경우 this는 이벤트 대상 엘리먼트 아님
+        // 따라서 이벤트 객체의 target를 이용해야 한다.(프론트엔트 프레임워크에서 주로 활용)
+        $('#msg').keyup(e => $('.result').text(e.target.value));
+    </script>
+</body>
+
+</html>

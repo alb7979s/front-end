@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <button id="btn1">확인</button>
+        <button id="btn2">추가</button>
+    </div>
+    <div id="result">추가 버튼 클릭시 여기에 내용이 적용됩니다.</div>
+    <script>
+        // btn1 버튼 클릭 시 result의 내용을 console에 출력한다.
+        // btn2 버튼 클릭 시 <h2>추가</h2>를 result의 기존 내용에 추가한다.
+        // jQuery 이용
+
+        /*
+        $('#btn1').on('click', function () {
+            console.log($('#result').html());
+        });
+
+        $('#btn2').on('click', function () {
+            $('#result').append('<h2>추가</h2>');
+        });
+        */
+
+        // es6
+        $('#btn1').click(() => console.log($('#result').html()));
+        $('#btn2').click(() => $('#result').append('<h2>추가</h2>'));
+    </script>
+</body>
+
+</html>

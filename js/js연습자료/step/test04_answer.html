@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <button>Click</button>
+    <div class="result">0</div>
+    <script>
+        // 위의 버튼에 클릭 이벤트를 설정하여 버튼을 클릭 시 
+        //     class 속성이 result인 엘리먼트의 숫자를 기존 숫자에서 1을 증가시키는 프로그램을 작성
+        // jQuery 를 이용
+
+        /* on 이벤트 설정
+        $('button').on('click', function () {
+            const $result = $('.result');
+            $result.text(parseInt($result.text()) + 1);
+        });
+        */
+
+        /*  단축 이벤트 : click
+        $('button').click(function () {
+            const $result = $('.result');
+            $result.text(parseInt($result.text()) + 1);
+        });
+        */
+
+        //*  arrow function
+        $('button').click(e => {
+            const $result = $('.result');
+            $result.text(parseInt($result.text()) + 1);
+        });
+        //*/
+    </script>
+</body>
+
+</html>

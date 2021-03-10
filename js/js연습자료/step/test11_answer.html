@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button id="btn1">확인</button>
+        <button id="btn2">추가</button>
+    </div>
+    <div id="result">추가 버튼 클릭시 여기에 내용이 적용됩니다.</div>
+    <script>
+        // btn1 버튼 클릭 시 result의 내용을 console에 출력한다.
+        // btn2 버튼 클릭 시 <h2>추가</h2>를 result의 기존 내용에 추가한다.
+        // Vanila Javascript 를 이용(createElement, innerHTML)
+
+        const result = document.getElementById('result');
+        document.getElementById('btn1').addEventListener('click', function () {
+            console.log(result.innerHTML);
+        });
+
+        /*  createElement 이용
+        document.getElementById('btn2').addEventListener('click', function () {
+            const h2Ele = document.createElement('h2');
+            h2Ele.append("추가");
+            result.append(h2Ele);
+        });
+        */
+
+        //  innerHTML 이용
+        document.getElementById('btn2').addEventListener('click', function () {
+            result.innerHTML += '<h2>추가</h2>';
+        });
+    </script>
+</body>
+
+</html>

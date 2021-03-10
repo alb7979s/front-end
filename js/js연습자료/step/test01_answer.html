@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>Click</button>
+
+    <script>
+        // 위의 버튼에 클릭 이벤트를 설정하여 버튼을 클릭 시 콘솔창에 "성공"을 출력하시오
+        // 순수 vanila 자바스크립트를 이용합니다.
+
+        /*  getElementsByTagName
+        const btns = document.getElementsByTagName("button");
+        btns[0].onclick = function () {
+            console.log("성공");
+        };
+        */
+
+        /*  querySelector 이용
+        const btn = document.querySelector("button");
+        btn.onclick = function () {
+            console.log("성공");
+        };
+        */
+
+        /*  화살표 함수 이용
+        const btn = document.querySelector("button");
+        btn.onclick = () => console.log("성공");
+        */
+
+        /*  DOM 레벨3 방식 표준 이벤트 설정
+        const btn = document.querySelector("button");
+        btn.addEventListener('click', () => console.log("성공"));
+        */
+
+        /* 불필요 변수 사용 안하기
+        document.querySelector("button").addEventListener('click', () => console.log("성공"));
+        */
+    </script>
+</body>
+
+</html>
