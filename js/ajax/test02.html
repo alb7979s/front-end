@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        $.ajax(options);
+
+        options : 객체(object)
+        주요 속성
+        1. url : 요청하려는 서버 페이지 주소
+        2. type(html에서 method라는 속성) : GET, POST, PUT, DELETE(REST 방식)
+        3. data : 파라미터(문자열, 객체(객체로 주면 ajax에서 알아서 문자열로 바꿔줌))
+        4. dataType : 서버로부터 응답받기를 원하는 타입(타입 설정하지 않으면 서버에서 넘겨줄때 명시한걸로 해준대)
+        5. contentType : 요청시 전송되는 데이터의 타입
+        6. headers : 요청시 사용자가 직접 헤더부분 특정 값을 설정, (API같은거 쓸 때 사용자 인증 같은거 헤더에 추가해서 보내라고하는 경우가 많대)
+        7. success : 서버의 결과가 오류없이 성공적으로 왔을 때 실행할 콜백함수
+            cf] call back hell 이렇게 계속 이어지는거 해결해주려고 done, fail이 생김
+            $.ajax({
+                success: function() {
+                    $.ajax({
+                        success: function() {
+
+                        }
+                    })
+            }
+        })
+        8. error : 서버 실행시 에러가 발생한 경우 실행할 콜백함수 
+        9. done() : success 대체(promise 형식 처리)     Ex. $.ajax({}).done();
+        10. fail() : error 대체(promise 형식 처리)
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <!-- <input type="text" id="msg"/> -->
+    <input type="text" id="id"/>
+    <input type="password" id="pass"/>
+    <button>호출</button>
+    <div id="result"></div>
+    <script>
+        /*
+        사용자가 버튼을 클릭하게 되면
+        Ajax요청으로 "http://localhost:8080/ajax/practice/test02" 페이지를 호출한다.
+        */
+
+        $('button').click(function(){
+            $.ajax({
+                url: '/ajax/practice/test02',
+                type: 'POST',
+                data: {
+                    id: $('#id').val(),
+                    pass: $('#pass').val(),
+                },
+                dataType: 'json',
+                success: function (data) { 
+                	// data의 타입이 string으로 받는다? Test02.java setContentType("application/json") 으로 바꿔주면 됨!(서버가 가르쳐주는경우) 또는! 위처럼 dataType명시
+                	console.log(typeof data);
+                	console.log(typeof data.code, data.msg);
+                	
+                    $('#result').html(data);
+                },
+            });
+        })
+        
+    //    // 틀 만들어놓고 세부적인거 하는 습관을 들이래유~
+    //     $('button').click(function(){
+    //         // 서버로 보낼거
+    //         $('msg').val()  //queryString parameter 개념으로 보면 됨
+
+    //         $.ajax({
+    //             // 같은 포트라 localhost 부분 생략함
+    //             url: '/ajax/practice/test02',
+    //             type: 'GET',
+    //             data: 'msg=' + $('#msg').val(),
+    //             //data: `msg=${$('#msg').val()}`, 	이거 왜 안되지 수정하기
+    //             /* jQuery는 이거도 지원해줌
+    //             data: {
+    //             	msg: $('#msg').val(),
+    //             }
+    //             */
+    //             success: function (data) {  // Test02.java에서 온 'SUCCESS'가 data로 올거임
+    //                 // console.log("호출 성공!");
+    //                 // console.log(data);
+    //                 $('#result').html(data);
+    //             },
+    //         });
+    //     })
+    </script>
+</body>
+</html>
