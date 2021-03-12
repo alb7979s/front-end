@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    
+    <link rel="stylesheet" href="test.css"/>
+    <style>
+        /* 아래처럼 해도 변화 없음 relative 특징 -> 현재 위치 기준으로 움직임*/
+        /* static은 top, left 안먹힘, default는 static! */
+        .pos1 {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        .pos2 {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        .pos3 {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <body>
+        <h1>위</h1>
+        <div class="parent">
+            <div class="pos1">1</div>
+            <div class="pos2">2</div>
+            <div class="pos3">3</div>
+        </div>
+        <h1>아래</h1>
+    </body>
+</html>

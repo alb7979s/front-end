@@ -1,0 +1,76 @@
+* {
+    /* 이러면 화면에 기호 안보이는데 화면에서만 사라진거 */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+li {
+    /* 기호 없애주는거!! */
+    list-style: none;
+}
+
+a {
+    /* 텍스트 밑줄 없애주는거 */
+    text-decoration: none;
+}
+
+ul.mainLnb {
+    width: 960px;
+    margin: 10px auto;
+}
+
+ul.mainLnb > li {
+    float: left;
+}
+
+ul.mainLnb > li > a {
+    background: #d9d9d9;
+    display: block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 2px;
+    text-align: center;
+    transition: 1s;
+}
+
+ul.mainLnb > li > ul {
+    /* 화면에서 숨김 */
+    display: none;
+}
+
+ul.mainLnb > li:hover > a {
+    background: #489df2;
+    color: white;
+}
+
+ul.mainLnb > li:hover > ul {
+    /* 다시 화면에 보이게! */
+    display: block;
+}
+
+ul.mainLnb > li > ul > li > a {
+    background: #d9d9d9;
+    display: block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 2px;
+    padding-left: 5px;
+    /* 패딩, 마진도 합쳐 계산해 놓은거*/
+    box-sizing: border-box;
+}
+
+ul.mainLnb > li > ul  a:hover{
+    background: #444;
+    color: #fff;
+}

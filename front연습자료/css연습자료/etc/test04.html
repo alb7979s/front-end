@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 0;
+            padding: 0;
+            font-size: 50px;
+            text-align: end;
+
+            position: absolute;
+            top: 210px;
+            left: 210px;
+        }
+        /* layer 방식은 주로 팝업에서 자주 사용 */
+        #layer1 {
+            background-color: #4ecdec;
+            width: 100px;
+            height: 100px;
+            /* z-index: 값을 높이면 낮은애들보다 더 앞으로 오게 됨, default=0*/
+            z-index: 100;
+        }
+        #layer2 {
+            background-color: #4eecca;
+            width: 150px;
+            height: 150px;
+            z-index: 50;
+        }
+        #layer3 {
+            background-color: #4eec9d;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h2>z-index</h2>
+    <!-- #layer$*5 로 만듦 오..-->
+    <!-- alt + ctrl로 다중커서 가능 -->
+    <div id="layer1">1</div>
+    <div id="layer2">2</div>
+    <div id="layer3">3</div>
+</body>
+</html>

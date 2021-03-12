@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 1000px;
+            height: 300px;
+            border: 10px solid tomato;
+            
+            /* auto 써서 부모의 가운데로 오게 함 */
+            margin: 30px auto;
+        }
+        .container > div {
+            width: 100px;
+            height: 100px;
+            border: 10px solid rgb(235, 248, 53);
+            margin: 10px;
+            font-size: 2em;
+
+            /* block 옆으로 붙게하는 방법들 */
+            
+            /*1. display: inline-block; */
+
+            /*2. float: left 여유 공간 생겼을때 아랫 부분이 올라오는 문제 생길 수 있음, 그럴때 쓰는게 clear */
+            
+            /* tip] 요즘에는 display속성의 flex 쓴대(아직 웹표준은 아닌데 grid라는 방식도 있음 이게 개편하대) */
+        }
+        .fr {
+            float: right;
+        }
+        .cb {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="fr">1</div>
+        <div class="fr">2</div>
+        <div class="cb">3</div>
+    </div>
+</body>
+</html>

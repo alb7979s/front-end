@@ -1,0 +1,31 @@
+html {
+    background: #b6b6b6;
+    padding: 30px;
+    margin: 0;
+}
+
+body {
+    background: #593123;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 0;
+}
+
+.parent {
+    background: white;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 0;
+}
+
+.parent > div {
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.pos1 { background-color: skyblue;}
+.pos2 { background-color: yellowgreen;}
+.pos3 { background-color: bisque}

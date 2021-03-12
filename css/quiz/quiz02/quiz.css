@@ -1,0 +1,73 @@
+/* 
+    제공되는 실행화면을 참조하여 quiz03.css를 작성하시오 
+	
+	* 참고하기 *
+	class 속성이 container 인 엘리먼트의 크기를 width: 1000px, height: 300px 으로 설정합니다.
+	class 속성이 container 인 엘리먼트 하위의 div와 span 엘리먼트의 width: 100px, height: 100px 으로 설정합니다. 
+*/
+
+* {
+    box-sizing: border-box;
+}
+.container {
+    width: 1000px; height: 300px;
+    margin: 30px auto;
+    background-color: rgb(235, 235, 235);
+    text-align: center;
+}
+
+/* 밑 선! */
+h2 {
+    font-size: 2em;
+    border-bottom: 5px solid orange;
+    padding: 10px;
+    /* 끝까지 있는게 아니니까 */
+    width: 680px;
+    margin: 50px auto;
+}
+
+/* h2 형제 모두~ */
+.container > h2 ~ * {
+    width: 100px; height: 100px;
+    font-size: 30px;
+    font-weight: bold;
+    border: 5px dashed black;
+    display: inline-block;
+    /* line-height 줄간격, block형태의 내용 한줄이고 가운데 위치시킬때 씀 */;
+    line-height: 100px;
+}
+.container > h2 ~ *:hover {
+    background-color: black;
+    color: white;
+}
+/*  처음에 직접 풀어본거
+.container {
+    width: 1000px; height: 300px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.container div {
+    font-weight: bold;
+    line-height: 100px;
+    font-size: 30px;
+    border: 4px dashed purple;
+    display: inline-block;
+    width: 100px; height: 100px;
+}
+.container span {
+    font-weight: bold;
+    line-height: 100px;
+    font-size: 30px;
+    border: 4px dashed purple;
+    display: inline-block;
+    width: 100px; height: 100px;
+}
+
+.container div:hover{
+    background: purple;
+}
+
+.container span:hover{
+    background: purple;
+} */
