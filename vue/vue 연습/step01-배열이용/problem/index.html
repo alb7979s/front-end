@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="container title">
+        <h2>싸피 5기</h2>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <table class="table table-bordered table-condensed table-hover">
+              <tr>
+                <th>지역</th>
+                <th>반</th>
+                <th>강사</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="3">데이터가 없습니다.</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="name" class="form-control-plaintext">지역명</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="지역명을 입력하세요"
+              />
+            </div>
+            <div class="form-group">
+              <label for="classNo" class="form-control-plaintext">반</label
+              ><input type="number" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="instructorName" class="form-control-plaintext"
+                >강사</label
+              ><input
+                type="text"
+                class="form-control"
+                placeholder="강사명을 입력하세요"
+              />
+            </div>
+            <div class="form-group text-right">
+              <button class="btn btn-info">등록</button>
+              <button class="btn btn-warning">목록</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        name: 'area-index',
+        data: {},
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

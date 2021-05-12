@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+      .container {
+        border: 1px solid whitesmoke;
+      }
+      .custom-form-group {
+        border: 1px solid whitesmoke;
+      }
+      .custom-form-group * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        vertical-align: middle;
+      }
+      .custom-form-group > label {
+        background-color: rgb(77, 107, 179);
+        color: white;
+        display: inline-block;
+        width: 20%;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+      }
+
+      .whitespace {
+        height: 40px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" class="container">
+      <h2 class="text-center text-primary my-3">SSAFY HRM ADD EMPLOEE</h2>
+      <div class="container whitespace"></div>
+      <div class="container">
+        <!--
+            id, //사원 아이디
+            name, //이름
+            email, // 이메일
+            hireDate, //고용일
+            manager, //관리자
+            position, //직책
+            deptName, //부서
+            salary, //월급
+            commission, //커미션
+        -->
+        <div class="custom-form-group">
+          <label for="name">이름</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="이름을 입력하세요"
+            style="width: 300px"
+            v-model="name"
+          />
+        </div>
+        <div class="custom-form-group">
+          <label for="email">이메일</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="이메일을 입력하세요"
+            style="width: 250px"
+            v-model="email"
+          />
+        </div>
+        <div class="custom-form-group">
+          <label for="hireDate">고용일</label>
+          <input
+            type="date"
+            id="hireDate"
+            v-model="hireDate"
+            placeholder="고용일을 입력하세요"
+          />
+        </div>
+        <div class="custom-form-group">
+          <label for="manager">관리자</label>
+          <select
+            id="manager"
+            v-model="manager"
+            placeholder="관리자를 입력하세요"
+          >
+            <option disabled value="">관리자 선택</option>
+            <option v-for="manName in managerOptions">{{manName}}</option>
+            <option>없음</option>
+          </select>
+        </div>
+        <div class="custom-form-group">
+          <label for="position">직책</label>
+          <select id="position" v-model="position">
+            <option disabled value="">직책을 선택하세요</option>
+            <option v-for="posName in positions">{{posName}}</option>
+          </select>
+        </div>
+        <div class="custom-form-group">
+          <label for="deptName">부서</label>
+          <select type="text" id="deptName" v-model="deptName">
+            <option disabled value="">부서를 선택하세요</option>
+            <option v-for="deptName in deptNames">{{deptName}}</option>
+          </select>
+        </div>
+        <div class="custom-form-group">
+          <label for="salary">월급</label>
+          <input
+            type="text"
+            id="salary"
+            v-model="salary"
+            placeholder="월급을 입력하세요"
+          />
+        </div>
+        <div class="custom-form-group">
+          <label for="commission">커미션</label>
+          <input
+            type="text"
+            id="commission"
+            placeholder="커미션 금액을 입력하세요"
+            style="width: 250px"
+            v-model="commission"
+          />
+        </div>
+        <div style="text-align: center">
+          <button class="button" @click="addEmployee">사원추가</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        // 폼 화면 입력값과 연관된 데이터 선언하기
+        data() {
+          return {
+            positions: [
+              '사장',
+              '기획부장',
+              '영업부장',
+              '총무부장',
+              '인사부장',
+              '과장',
+              '영업대표이사',
+              '사원',
+            ],
+            deptNames: ['기획', '영업', '총무', '인사', '기타'],
+            id: '', //사원번호
+            name: '', //이름
+            email: '', // 이메일
+            hireDate: '', //고용일
+            manager: '', //관리자
+            position: '', //직책
+            deptName: '', //부서
+            salary: 0, //월급
+            commission: 0, //커미션
+            managerOptions: [],
+          };
+        },
+        methods: {
+          addEmployee() {
+            let empsData = localStorage.getItem('empsData');
+            let newsData = {
+              no: 0,
+              items: [],
+            };
+            if (empsData) {
+              newsData = JSON.parse(empsData);
+            }
+
+            newsData.items.push({
+              id: ++newsData.no, //사원번호
+              name: this.name, //이름
+              email: this.email, // 이메일
+              hireDate: this.hireDate, //고용일
+              manager: this.manager, //관리자
+              position: this.position, //직책
+              deptName: this.deptName, //부서
+              salary: this.salary, //월급
+              commission: this.commission, //커미션
+            });
+            localStorage.setItem('empsData', JSON.stringify(newsData));
+            alert('사원 정보가 저장되었습니다.');
+            location.href = 'hrm_list.html';
+          },
+        },
+        created() {
+          // 로컬스토리지 데이터를 가져와서
+          // 사원의 이름을 managerOptions 배열에 추가한다.
+          let empsData = localStorage.getItem('empsData');
+          if (empsData) {
+            empsData = JSON.parse(empsData);
+            let items = empsData.items;
+            items.forEach((emp) => {
+              this.managerOptions.push(emp.name);
+            });
+          }
+        },
+      });
+    </script>
+  </body>
+</html>

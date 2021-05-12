@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	키 : <input type="text" id="key" />
+	값 : <input type="text" id="value" />
+	<button id="addBtn">추가</button>
+	<button id="removeBtn">삭제</button>
+	<button id="clearBtn">전체삭제</button>
+	<button id="viewBtn">전체조회</button>
+	<ul id="dataView"></ul>
+	<script>
+		let addBtn = document.querySelector("#addBtn");
+		let delBtn = document.querySelector("#removeBtn");
+		let clearBtn = document.querySelector("#clearBtn");
+		
+		addBtn.onclick = function () {
+			let key = document.querySelector("#key");
+			let value = document.querySelector("#value");
+			// html5 부터 제공되는 객체
+			localStorage.setItem(key.value, value.value);
+		};
+		delBtn.onclick = function () {
+			let key = document.querySelector("#key");
+			localStorage.removeItem(key.value);
+		};
+		clearBtn.onclick = function () {
+			localStorage.clear();
+		};
+		viewBtn.onclick = function () {
+			let liHtml = "";
+			for (let i = 0; i < localStorage.length; i++) {
+				let key = localStorage.key(i);
+				let value = localStorage.getItem(key);
+				liHtml += "<li>" + value + "</li>";
+			}
+			document.querySelector("#dataView").innerHTML = liHtml;
+		};
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

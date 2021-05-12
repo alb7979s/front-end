@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="container title">
+        <h2>싸피 5기</h2>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <table class="table table-bordered table-condensed table-hover">
+              <tr>
+                <th>지역</th>
+                <th>반</th>
+                <th>강사</th>
+              </tr>
+              <!-- tr태그를 클릭하면 detail 함수 호출 
+                함수를 호출할 때 지역번호를 같이 넘김
+                :key 엘리먼트를 빠르게 찾는 역할(빼도 동작은 됨)
+              -->
+              <tr v-for="area in areas" :key="area.no" @click="detail(area.no)">
+                <td>{{area.name}}</td>
+                <td>{{area.classNo}}</td>
+                <td>{{area.instructorName}}</td>
+              </tr>
+              <tr v-if="areas.length === 0">
+                <td colspan="3">데이터가 없습니다.</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="name" class="form-control-plaintext">지역명</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="지역명을 입력하세요"
+                v-model="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="classNo" class="form-control-plaintext">반</label
+              ><input type="number" class="form-control" v-model="classNo"/>
+            </div>
+            <div class="form-group">
+              <label for="instructorName" class="form-control-plaintext">강사</label
+              ><input
+                type="text"
+                class="form-control"
+                placeholder="강사명을 입력하세요"
+                v-model="instructorName"
+              />
+            </div>
+            <div class="form-group text-right">
+              <!-- v:on => @click -->
+              <button class="btn btn-info" @click="regArea" v-if="mode === 'reg'">등록</button>
+              <button class="btn btn-warning" @click="initForm" v-if="mode === 'detail'">목록</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        name: 'area-index',
+        data() {
+          return {
+            areas: [],
+            mode: 'reg',
+            name: '',
+            classNo: 0,
+            instructorName: '',
+          };
+        },
+        // 로컬 스토리지의 데이터를 areas 배열에 적용하기
+        // key: areas, value: {no: 1, items: [{}, {}, ...]}, 형태는 이런데 문자열로 들어감
+        created() {
+          const areas = localStorage.getItem('areas');
+          let newAreas = {
+            no: 0,
+            items: [],
+          };
+          if(areas) { // 저장소에 데이터가 존재 한다면
+            newAreas = JSON.parse(areas); // 문자열이니까 객체로 바꿔줌
+          } else {
+            localStorage.setItem('areas', JSON.stringify(newAreas));
+          }
+          this.areas = newAreas.items;
+        },
+        methods: {
+          detail(no) {
+            // console.log(no);
+            // 목록 데이터 배열을 돌면서 area.no === no 인 항목을 찾음, 이 작업 나중에 ajax로 바뀔거임
+            // 찾은 area의 정보를 data 속성의 값을 업데이트
+            // mode 값 detail로 변경
+            this.areas.forEach((area) => {
+              if(area.no === no){
+                this.instructorName = area.instructorName;
+                this.name = area.name;
+                this.classNo = area.classNo;
+                this.mode = 'detail';
+              }
+            });
+          },
+          initForm() {
+            this.name = '';
+            this.classNo = 0;
+            this.instructorName = '';
+            this.mode = 'reg';
+          },
+          regArea(){
+            const areas = localStorage.getItem('areas');
+            let newAreas = {
+              no: 0,
+              items: [],
+            };
+            if (areas) {
+              newAreas = JSON.parse(areas);
+            }
+            newAreas.items.push({
+              no: ++newAreas.no,
+              name: this.name,
+              classNo: this.classNo,
+              instructorName: this.instructorName,
+            });
+            localStorage.setItem("areas", JSON.stringify(newAreas));
+            this.areas = newAreas.items;
+            this.initForm();
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
