@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="container title">
+        <h2>싸피 5기</h2>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <area-list></area-list>
+          <area-info></area-info>
+        </div>
+      </div>
+    </div>
+    <script>
+      const bus = new Vue();
+    </script>
+    <script type="module">
+      import AreaList from './components/AreaList.js';
+      import AreaInfo from './components/AreaInfo.js';
+      new Vue({
+        el: '#app',
+        name: 'area-index',
+        components: { AreaList, AreaInfo },
+      });
+    </script>
+  </body>
+</html>
