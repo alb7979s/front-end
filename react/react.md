@@ -50,6 +50,42 @@ typora-copy-images-to: images
 - npx webpack (실행) 하면 dist/ 아래에 번들링된 파일이 생성됨(default가 dist/라서 여기 생성된거)
 - index.js에서 가져다 쓰는 모든 파일들이 하나의 파일로 만들어지는거
 
+##### create-react-app으로 시작!
+
+- react 개발환경 직접 구축하려면(webpack, babel, jset, eslint, polyfill, HMR, ... 너무 많음)
+- 이런거 하기 쉽게 페이스북에서 관리하는 공식 툴
+- npx create-react-app cra-test
+- 초기 프로젝트 구축시 cra 사용해도 되고 next.js라는 프레임워크 사용도 가능
+  - cra는 서버사이드 렌더링 지원 x, 따라서 서버사이드 렌더링 필수면 next.js쓰는게 좋음
+  - 설정 변경(커스터마이징) 면에서도 next.js가 더 좋음
+- 설치된거 보면 
+  - public에 리소스 파일들
+  - src에서 작업하게 될거
+- npm start해서 테스트 해볼수있음(HMR기능으로 수정시 바로바로 적용됨)
+- npm start는 배포할때 사용x, 개발모드에서만 사용(개발모드라 성능 최적화 안되어있음)
+- 배포시에는 빌드 명령어 사용
+- js에서 import해서 사용시 좋은점: json같은 데이터 사이즈 크거나 항상 필요하지 않고 특정 순간에만 필요하면 그때그때 받아오는게 좋음 
+
+- cra 명령어
+  - start: 개발모드로 실행시 사용, 기본적으로 http로 실행되고 https로 사용하고 싶으면 set HTTPS=true \&\& npm start 해주면 됨(windows기준)
+  - build: 배포할 때 사용, 빌드하면 정적파일이 생성됨, 서버에서는 생성된 build 폴더 안에 있는 내용들 정적파일로 서비스 하면 됨, 별도로 서버에 애플리케이션을 실행 하지 않기 때문에 서버사이드 렌더링으로 동작할 수 없는거. 로컬에서 정적파일 실행해보려면 npx serve -s build 해보면 됨
+  - test: 테스트시 사용, .test.js 이렇게 이름으로 하면 테스트 파일로 인식
+  - eject: react-scripts를 사용하지 않고 모든 설정 파일을 추출하는 명령어, cra를 기반으로 직접 개발환경을 구축하고 싶을 때 사용. 꼭 필요한거 아니면 관리측면에서 추출안하는게 좋음
+- polyfill
+  - 오래된 브라우저에서 지원 안해주는 기능 있을 때 pollyfill 추가해서 사용, 보통 core-js라는 것을 많이 사용해서 추가함
+  - import 'core-js/features/string/pad-start' 이런식으로 추가해서 사용
+  - cra에 기본적으로 core-js가 내장되어 있기 때문에 그냥 import만 해서 사용하면 됨
+- 환경변수
+  - 개발, 테스트 또는 배포 환경별로 다른 값을 적용할 때 유용
+  - 전달된 환경변수는 코드에서 process.env.{변수 이름} 이런식으로 사용 가능
+  - cra에서는 기본적으로 process.env.NODE_ENV 가지고 있음
+    - npm start => development
+    - npm test => test
+    - npm run build => production 이라는 값을 가지고 있음
+  - 환경변수 커맨드 라인에서 입력시 set "**REACT_APP_**API_URL=api.myapp.com" && npm start
+  - 환경변수 많아지면 .env 파일 만들어서 관리하는게 좋음
+  - 예를들면 .env.development 따로, .env.production 따로 만들어서 각각 상수같은거 다르게 설정해서 테스트 가능
+
 ---
 
 ##### 용어
