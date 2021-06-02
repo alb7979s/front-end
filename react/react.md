@@ -33,11 +33,22 @@ typora-copy-images-to: images
   - 위처럼 하면 src폴더에 있는거 파일 변경될 때마다 컴파일 자동으로 해줌
   - node_modules/.bin 보면 바벨의 바이너리 파일 있는데, npx 명령어 사용해서 바이너리 파일 실행 가능, 만약 설치 안했으면 npx 명령어가 자동으로 바벨 패키지 다운받아서 실행해줌
 
+##### 웹팩
 
+- 파일 내용 기반으로 파일 이름에 해시값 추가 => 효율적으로 캐싱 이용
+- 사용되지 않는 코드 제거
+- js 압축
+- js에서 css, json, txt파일 등을 일반 모듈처럼 불러오기
+- 위 내용들처럼 js안에서 모든거 처리할 수 있는 편리한 기능들 제공
+- 가장 큰 이유는 모듈 시스템(ESM, commonJS)을 사용하고 싶어서래유
+  - ESM: ES6에 추가된거
+  - commonJS: 노드에서 많이 사용됨
+- 요즘 브라우저 ESM 많이 지원하지만 많은 오픈 소스가 commonJS로 작성되었대 commonJS는 지원 안해줘서 웹팩 쓴대
 
+- npm install webpack webpack-cli react react-dom (issue: 프로젝트 이름이랑 겹치면 에러남)
 
-
-
+- npx webpack (실행) 하면 dist/ 아래에 번들링된 파일이 생성됨(default가 dist/라서 여기 생성된거)
+- index.js에서 가져다 쓰는 모든 파일들이 하나의 파일로 만들어지는거
 
 ---
 
