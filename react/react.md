@@ -98,11 +98,27 @@ typora-copy-images-to: images
   - 변수나 믹스인 등의 기능으로 코드 재사용 가능
   - npm install node-sass 설치
   - css파일 이름 scss로 작성해줘야함
+  - sass 사용하면서 css-module 사용 가능
 - css-in-js
   - css코드를 js안에서 작성하는 방식
   - 재사용, 동적으로 css코드 관리 가능
   - 팀 개발자 대부분이 js, css 모두 작성 할 줄 안다면 좋은 선택이 될 수 있는데 마크업 따로 개발팀이 있으면 css-in-js도입은 힘듦
   - npm install styled-components
+
+##### SPA(Single Page Application)
+
+![image-20210603225230954](images/image-20210603225230954.png)
+
+- 왼쪽거는 MPA(Multiple Page Application), 페이지 전환시 서버가 주는 html로 리로드
+- SPA는 페이지 전환시 자체적으로 라우팅 처리 가능
+- SPA 가능하기 위한 조건
+  - js에서 브라우저로 페이지 전환 요청을 보낼 수 있음 (단, 브라우저는 서버로 요청을 보내지 않음)
+  - 브라우저의 뒤로가기와 같은 사용자의 페이지 전환 요청을 js에서 처리할 수 있음(이때도 브라우저는 서버로 요청을 보내지 않아야함)
+- 위 조건을 만족시켜주는 브라우저 API
+  - pushState, replaceState 함수(js -> browser)
+  - popstate 이벤트 (browser -> js)
+- react-router-dom
+  - 여러가지 편의기능 제공(페이지 렌더링 편하게, 현재상태정보 자동으로 관리, 코드 분할 기능 등)
 
 ---
 
