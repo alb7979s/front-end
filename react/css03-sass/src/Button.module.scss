@@ -1,0 +1,14 @@
+@import './shared.scss'; //이렇게 css코드에서 다른 css 가져올 수 있음
+
+.big {
+    width: 250px;
+}
+
+.small {
+    width: 100px;
+}
+
+.button {
+    height: 20px;
+    background-color: $infoColor;
+}

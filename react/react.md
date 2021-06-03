@@ -86,13 +86,30 @@ typora-copy-images-to: images
   - 환경변수 많아지면 .env 파일 만들어서 관리하는게 좋음
   - 예를들면 .env.development 따로, .env.production 따로 만들어서 각각 상수같은거 다르게 설정해서 테스트 가능
 
+##### css 작성
+
+- 일반적인 css파일
+  - 이름이 같으면 충돌해서 뒤에거로 덮어씌어지는 문제가 발생할 수 있음
+- css-module
+  - 이름 충돌 문제 해결, 실행해서 속성 보면 뒤에 해시값 붙어서 각 클래스명 고유한 이름 부여받게됨
+  - cf) 클래스네임 입력하는게 깔끔하지 않은데 npm install classnames 깔아서 좀 더 깔끔하게 할 수도 있음
+- sass
+  - css와 유사한데 별도의 문법을 이용해서 생산성이 높은 스타일 코드 작성 가능
+  - 변수나 믹스인 등의 기능으로 코드 재사용 가능
+  - npm install node-sass 설치
+  - css파일 이름 scss로 작성해줘야함
+- css-in-js
+  - css코드를 js안에서 작성하는 방식
+  - 재사용, 동적으로 css코드 관리 가능
+  - 팀 개발자 대부분이 js, css 모두 작성 할 줄 안다면 좋은 선택이 될 수 있는데 마크업 따로 개발팀이 있으면 css-in-js도입은 힘듦
+  - npm install styled-components
+
 ---
 
 ##### 용어
 
 - 엘리먼트(element): 화면에 표시할 내용을 기술, React의 가장 작은 단위로 불변객체임(엘리먼트를 생성한 이후 해당 엘리먼트의 자식이나 속성을 변경할 수 없음. 엘리먼트는 영화에서 하나의 프레임과 같이 특정 시점의 UI를 보여줌)
 - 컴포넌트(component): 개념적으로 컴포넌트는 js함수와 유사함. "props"라고 하는 임의의 입력을 받은 후, 화면에 어떻게 표시된느지를 기술하는 리액트 엘리먼트를 반환
-
 - jsx(JavaScript eXtension): HTML 문법을 js코드 내부에 쓴 것, react에서 HTML을 표현할 때 jsx를 사용함 빌드시 바벨에 의해 js로 변환됨
   - jsx 규칙!
     - 속성은 항상 쌍따옴표로 감쌈
@@ -100,6 +117,12 @@ typora-copy-images-to: images
     - 어떤 태그든 self-closing tag 가능 \<div/\> 이런식으로
     - 형제 노드 작성 불가
     - jsx안에 js값은 변수를 먼저 렌더 안에서 정의하고 리턴에서 변수명을 중괄호로 감싼 형태로 표현
-
 - 렌더링: html element or React element 등의 코드가 눈으로 볼 수 있도록 그려지는 것
 
+
+
+---
+
+##### tip
+
+- package.json에 있는 dependencies 모두 설치: 프로젝트 경로에 package.json 파일 두고 그냥 npm install 하면 그 파일에 명시된 dependencies 모두 설치

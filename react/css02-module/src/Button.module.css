@@ -1,0 +1,12 @@
+.big {
+    width: 250px;
+}
+
+.small {
+    width: 100px;
+}
+
+.button {
+    height: 20px;
+    background-color: yellowgreen;
+}

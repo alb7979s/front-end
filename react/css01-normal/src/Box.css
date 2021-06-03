@@ -1,0 +1,12 @@
+.big {
+    width: 500px;
+}
+
+.small {
+    width: 200px;
+}
+
+.box {
+    height: 50px;
+    background-color: aqua;
+}
